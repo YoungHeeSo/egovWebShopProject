@@ -152,10 +152,10 @@ public class EgovBuyController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateBuyView.do")
-	public String updateBuyView(@RequestParam("selectedNum") String num, @ModelAttribute("searchVO") ShopDefaultVO searchVO, Model model) throws Exception {
+	public String updateBuyView(@RequestParam("selectedNum") int num, @ModelAttribute("searchVO") ShopDefaultVO searchVO, Model model) throws Exception {
 		
 		ShopVO shopVO = new ShopVO();
-		shopVO.setNum(Integer.parseInt(num));
+		shopVO.setNum(num);
 		
 		// 변수명은 CoC 에 따라 sampleVO
 		model.addAttribute(selectBuy(shopVO, searchVO));
