@@ -28,8 +28,8 @@
     <script type="text/javaScript" language="javascript" defer="defer">
         <!--
         /* 글 수정 화면 function */
-        function fn_egov_select(num) {
-        	document.listForm.selectedNum.value = num;
+        function fn_egov_select(id) {
+        	document.listForm.selectedId.value = id;
         	document.listForm.action = "<c:url value='/updateBuyView.do'/>";
            	document.listForm.submit();  	
         }
@@ -59,7 +59,7 @@
 
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
     <form:form modelAttribute="searchVO" id="listForm" name="listForm" method="post">
-        <input type="hidden" name="selectedNum" />
+        <input type="hidden" name="selectedId" />
         <div id="content_pop">
         	<!-- 타이틀 -->
         	<div id="title">
