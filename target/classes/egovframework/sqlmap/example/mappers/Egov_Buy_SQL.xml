@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.shop.service.impl.BuyMapper">
+
+<!-- 	
+	private int num;
+
+	private String userID;
+
+	private String prodName;
+
+	private String groupName;
+
+	private int price;
+
+	private int amount;
+ -->
+ 	
+ 	<!-- buyMapper, sqlMapperConfig -->
+ 
+	<resultMap id="buytbl" type="egovframework.example.shop.service.ShopVO">
+		<result property="num" column="num"/>
+		<result property="userID" column="userID"/>
+		<result property="prodName" column="prodName"/>
+		<result property="groupName" column="groupName"/>
+		<result property="price" column="price"/>
+		<result property="amount" column="amount"/>
+	</resultMap>
+
+	
+	<insert id="insertBuy" parameterType="shopVO">
+
+			INSERT INTO buytbl
+				( num, userID
+				  , prodName
+				  , groupName
+				  , price
+				  , amount )
+			VALUES ( #{num}, #{userID}
+				  , #{prodName}
+				  , #{groupName}
+				  , #{price}
+				  , #{amount} )
+
+	</insert>
+
+	<!-- <update id="updateSample">
+
+			UPDATE SAMPLE
+			SET ID=#{id}
+				, NAME=#{name}
+				, DESCRIPTION=#{description}
+				, USE_YN=#{useYn}
+				  WHERE ID=#{id}
+
+	</update> -->
+
+	<delete id="deleteBuy">
+
+			DELETE FROM buytbl
+			WHERE userID=#{userID}
+
+	</delete>
+
+	<!-- <select id="selectSample" resultMap="sample">
+
+			SELECT
+				ID, NAME, DESCRIPTION, USE_YN, REG_USER
+			FROM SAMPLE
+			WHERE ID=#{id}
+
+	</select> -->
+
+	<select id="selectBuyList" parameterType="searchVO" resultType="egovMap">
+
+			SELECT
+				num, userID, prodName, groupName, price, amount
+			FROM buytbl
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND	userID LIKE '%' || #{searchKeyword} || '%'
+					</when>
+		            <when test="searchCondition == 1">
+						AND	prodName LIKE '%' || #{searchKeyword} || '%'
+					</when>
+				</choose>
+			</if>
+			ORDER BY num ASC
+			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+	</select>
+
+	<select id="selectBuyListTotCnt" parameterType="searchVO" resultType="int">
+
+			SELECT COUNT(*) totcnt
+			FROM buytbl
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND userID LIKE '%' || #{searchKeyword} || '%'
+					</when>
+		            <when test="searchCondition == 1">
+						AND	prodName LIKE '%' || #{searchKeyword} || '%'
+					</when>
+				</choose>
+			</if>
+	</select>
+
+</mapper>

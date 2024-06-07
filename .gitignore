@@ -1,6 +1,6 @@
 
-.settings/
-.classpath
-target/
-*/target/*
-.DS_Store
+//.settings/
+//.classpath
+//target/
+//*/target/*
+//.DS_Store
