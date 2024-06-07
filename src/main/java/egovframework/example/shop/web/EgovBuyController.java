@@ -151,14 +151,17 @@ public class EgovBuyController {
 	 * @return "egovSampleRegister"
 	 * @exception Exception
 	 */
-//	@RequestMapping("/updateSampleView.do")
-//	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-//		SampleVO sampleVO = new SampleVO();
-//		sampleVO.setId(id);
-//		// 변수명은 CoC 에 따라 sampleVO
-//		model.addAttribute(selectSample(sampleVO, searchVO));
-//		return "sample/egovSampleRegister";
-//	}
+	@RequestMapping("/updateBuyView.do")
+	public String updateBuyView(@RequestParam("selectedNum") String num, @ModelAttribute("searchVO") ShopDefaultVO searchVO, Model model) throws Exception {
+		
+		ShopVO shopVO = new ShopVO();
+		shopVO.setNum(Integer.parseInt(num));
+		
+		// 변수명은 CoC 에 따라 sampleVO
+		model.addAttribute(selectBuy(shopVO, searchVO));
+		
+		return "buy/egovBuyRegister";
+	}
 
 	/**
 	 * 글을 조회한다.
@@ -168,9 +171,10 @@ public class EgovBuyController {
 	 * @return @ModelAttribute("sampleVO") - 조회한 정보
 	 * @exception Exception
 	 */
-//	public SampleVO selectSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO) throws Exception {
-//		return sampleService.selectSample(sampleVO);
-//	}
+	public ShopVO selectBuy(ShopVO shopVO, @ModelAttribute("searchVO") ShopDefaultVO searchVO) throws Exception {
+		
+		return buyService.selectBuy(shopVO);
+	}
 
 	/**
 	 * 글을 수정한다.
@@ -180,21 +184,21 @@ public class EgovBuyController {
 	 * @return "forward:/egovSampleList.do"
 	 * @exception Exception
 	 */
-//	@RequestMapping("/updateSample.do")
-//	public String updateSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
-//			throws Exception {
-//
-//		beanValidator.validate(sampleVO, bindingResult);
-//
-//		if (bindingResult.hasErrors()) {
-//			model.addAttribute("sampleVO", sampleVO);
-//			return "sample/egovSampleRegister";
-//		}
-//
-//		sampleService.updateSample(sampleVO);
-//		status.setComplete();
-//		return "forward:/egovSampleList.do";
-//	}
+	@RequestMapping("/updateBuy.do")
+	public String updateBuy(@ModelAttribute("searchVO") ShopDefaultVO searchVO, ShopVO shopVO, BindingResult bindingResult, Model model, SessionStatus status)
+			throws Exception {
+
+		beanValidator.validate(shopVO, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("shopVO", shopVO);
+			return "buy/egovBuyRegister";
+		}
+
+		buyService.updateBuy(shopVO);
+		status.setComplete();
+		return "forward:/egovBuyList.do";
+	}
 
 	/**
 	 * 글을 삭제한다.

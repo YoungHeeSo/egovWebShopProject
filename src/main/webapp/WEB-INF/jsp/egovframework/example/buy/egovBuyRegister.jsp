@@ -53,7 +53,7 @@
         	if(!validateShopVO(frm)){
                 return;
             }else{
-            	frm.action = "<c:url value="${registerFlag == 'create' ? '/addBuy.do' : '/updateSample.do'}"/>";
+            	frm.action = "<c:url value="${registerFlag == 'create' ? '/addBuy.do' : '/updateBuy.do'}"/>";
                 frm.submit();
             }
         }

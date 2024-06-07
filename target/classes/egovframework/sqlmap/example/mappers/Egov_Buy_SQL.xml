@@ -44,16 +44,16 @@
 
 	</insert>
 
-	<!-- <update id="updateSample">
+	<update id="updateBuy">
 
-			UPDATE SAMPLE
-			SET ID=#{id}
-				, NAME=#{name}
-				, DESCRIPTION=#{description}
-				, USE_YN=#{useYn}
-				  WHERE ID=#{id}
+			UPDATE buytbl
+			SET prodName=#{prodName}
+				, groupName=#{groupName}
+				, price=#{price}
+				, amount=#{amount}
+				  WHERE num=#{num}
 
-	</update> -->
+	</update>
 
 	<delete id="deleteBuy">
 
@@ -62,14 +62,14 @@
 
 	</delete>
 
-	<!-- <select id="selectSample" resultMap="sample">
+	<select id="selectBuy" resultMap="buytbl">
 
 			SELECT
-				ID, NAME, DESCRIPTION, USE_YN, REG_USER
-			FROM SAMPLE
-			WHERE ID=#{id}
+				userID, prodName, groupName, price, amount
+			FROM buytbl
+			WHERE num=#{num}
 
-	</select> -->
+	</select> 
 
 	<select id="selectBuyList" parameterType="searchVO" resultType="egovMap">
 

@@ -87,10 +87,10 @@ public class EgovBuyServiceImpl extends EgovAbstractServiceImpl implements EgovB
 	 * @return void형
 	 * @exception Exception
 	 */
-//	@Override
-//	public void updateSample(SampleVO vo) throws Exception {
-//		sampleDAO.updateSample(vo);
-//	}
+	@Override
+	public void updateBuy(ShopVO vo) throws Exception {
+		buyDAO.updateBuy(vo);
+	}
 
 	/**
 	 * 글을 삭제한다.
@@ -109,13 +109,15 @@ public class EgovBuyServiceImpl extends EgovAbstractServiceImpl implements EgovB
 	 * @return 조회한 글
 	 * @exception Exception
 	 */
-//	@Override
-//	public SampleVO selectSample(SampleVO vo) throws Exception {
-//		SampleVO resultVO = sampleDAO.selectSample(vo);
-//		if (resultVO == null)
-//			throw processException("info.nodata.msg");
-//		return resultVO;
-//	}
+	@Override
+	public ShopVO selectBuy(ShopVO vo) throws Exception {
+		ShopVO resultVO = buyDAO.selectBuy(vo);
+		
+		if (resultVO == null)
+			throw processException("info.nodata.msg");
+		
+		return resultVO;
+	}
 
 	/**
 	 * 글 목록을 조회한다.

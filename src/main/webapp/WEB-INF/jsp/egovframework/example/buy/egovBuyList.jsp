@@ -28,10 +28,10 @@
     <script type="text/javaScript" language="javascript" defer="defer">
         <!--
         /* 글 수정 화면 function */
-        function fn_egov_select(id) {
-        	document.listForm.selectedId.value = id;
-           	document.listForm.action = "<c:url value='/updateSampleView.do'/>";
-           	document.listForm.submit();
+        function fn_egov_select(num) {
+        	document.listForm.selectedNum.value = num;
+        	document.listForm.action = "<c:url value='/updateBuyView.do'/>";
+           	document.listForm.submit();  	
         }
         
         /* 글 등록 화면 function */
@@ -59,7 +59,7 @@
 
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
     <form:form modelAttribute="searchVO" id="listForm" name="listForm" method="post">
-        <input type="hidden" name="selectedId" />
+        <input type="hidden" name="selectedNum" />
         <div id="content_pop">
         	<!-- 타이틀 -->
         	<div id="title">
@@ -73,8 +73,8 @@
         			<li>
         			    <label for="searchCondition" style="visibility:hidden;"><spring:message code="search.choose" /></label>
         				<form:select path="searchCondition" cssClass="use">
-        					<form:option value="1" label="Name" />
-        					<form:option value="0" label="ID" />
+        					<form:option value="1" label="userID" />
+        					<form:option value="0" label="num" />
         				</form:select>
         			</li>
         			<li><label for="searchKeyword" style="visibility:hidden;display:none;"><spring:message code="search.keyword" /></label>

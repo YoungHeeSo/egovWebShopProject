@@ -54,7 +54,7 @@ public interface BuyMapper {
 	 * @return void형
 	 * @exception Exception
 	 */
-	//void updateSample(SampleVO vo) throws Exception;
+	void updateBuy(ShopVO vo) throws Exception;
 
 	/**
 	 * 글을 삭제한다.
@@ -70,7 +70,7 @@ public interface BuyMapper {
 	 * @return 조회한 글
 	 * @exception Exception
 	 */
-	//SampleVO selectSample(SampleVO vo) throws Exception;
+	ShopVO selectBuy(ShopVO vo) throws Exception;
 
 	/**
 	 * 글 목록을 조회한다.
